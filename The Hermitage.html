@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Heritage | มรดกแห่งสุราแช่</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800;900&family=Noto+Serif+Thai:wght@400;500;600;700&family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0806;
+  --ink-2:#120e09;
+  --gold:#CCA000;
+  --gold-light:#e6ca7f;
+  --gold-dim:#6b5719;
+  --line:rgba(204,160,0,.14);
+  --cream:#f2ead8;
+  --muted:#9c8e77;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ink);
+  color:var(--cream);
+  font-family:'Sarabun',sans-serif;
+  font-weight:300;
+  -webkit-font-smoothing:antialiased;
+}
+.thai-serif{font-family:'Noto Serif Thai',serif;}
+.display{font-family:'Raleway',sans-serif;}
+a{color:inherit;}
+
+/* ANNOUNCEMENT BAR */
+.announce{
+  background:var(--ink-2);
+  color:var(--gold-light);
+  text-align:center;
+  font-size:11px;
+  letter-spacing:.22em;
+  padding:11px 16px;
+  font-family:'Raleway',sans-serif;
+  font-weight:600;
+  border-bottom:1px solid var(--line);
+}
+
+/* NAV */
+nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 32px;
+  background:var(--ink);
+  border-bottom:1px solid var(--line);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.nav-icon{width:18px;height:18px;cursor:pointer;opacity:.7;}
+.logo{
+  font-family:'Raleway',sans-serif;
+  font-size:16px;
+  letter-spacing:.42em;
+  color:var(--cream);
+  font-weight:700;
+  text-align:center;
+  text-indent:.42em;
+}
+.nav-side{display:flex;gap:18px;align-items:center;width:60px;}
+.nav-side.right{justify-content:flex-end;}
+
+/* HERO */
+.hero{
+  position:relative;
+  min-height:94vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  padding:60px 24px;
+  background:
+    radial-gradient(ellipse 44% 34% at 50% 40%, rgba(204,160,0,.10), transparent 72%),
+    var(--ink);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:520px;height:520px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  top:44%;left:50%;
+  transform:translate(-50%,-50%);
+}
+.hero-glass{ z-index:2; margin-bottom:34px; }
+.hero-eyebrow{
+  font-family:'Raleway',sans-serif;
+  letter-spacing:.5em;
+  text-indent:.5em;
+  font-size:11px;
+  color:var(--gold-light);
+  margin-bottom:26px;
+  text-transform:uppercase;
+  font-weight:600;
+  z-index:2;
+}
+.hero h1{
+  font-family:'Raleway',sans-serif;
+  font-weight:800;
+  font-size:clamp(42px,9vw,96px);
+  line-height:1;
+  margin:0 0 26px;
+  color:var(--cream);
+  letter-spacing:.1em;
+  text-indent:.1em;
+  z-index:2;
+}
+.hero h1 span{color:var(--gold);}
+.hero p{
+  max-width:440px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:2;
+  margin-bottom:40px;
+  z-index:2;
+}
+.btn{
+  display:inline-block;
+  background:transparent;
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  padding:16px 44px;
+  letter-spacing:.3em;
+  text-indent:.3em;
+  font-size:11px;
+  font-family:'Raleway',sans-serif;
+  font-weight:600;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.4s;
+  z-index:2;
+}
+.btn:hover{background:var(--gold); border-color:var(--gold); color:var(--ink);}
+.scroll-cue{
+  margin-top:64px;
+  width:1px;height:44px;
+  background:var(--gold-dim);
+  z-index:2;
+  position:relative;
+  overflow:hidden;
+}
+.scroll-cue::after{
+  content:"";
+  position:absolute;
+  top:0;left:0;width:100%;height:14px;
+  background:var(--gold-light);
+  animation:drip 2.6s ease-in-out infinite;
+}
+@keyframes drip{0%{transform:translateY(-14px);}100%{transform:translateY(44px);}}
+
+/* DISCOVER SECTION */
+.discover{padding:110px 24px 140px; text-align:center;}
+.discover .eyebrow-sm{
+  font-family:'Raleway',sans-serif;
+  letter-spacing:.4em;
+  text-indent:.4em;
+  font-size:11px;
+  color:var(--gold-dim);
+  font-weight:600;
+  margin-bottom:18px;
+}
+.discover h2{
+  font-family:'Noto Serif Thai',serif;
+  font-weight:600;
+  font-size:clamp(28px,4.4vw,40px);
+  margin-bottom:70px;
+  color:var(--cream);
+}
+
+.cards{
+  max-width:1080px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+}
+.card{
+  background:transparent;
+  padding:0 32px 40px;
+  text-align:left;
+  cursor:pointer;
+  transition:.4s;
+  border-top:1px solid var(--line);
+  padding-top:40px;
+}
+.card + .card{border-left:1px solid var(--line);}
+.card:hover .card-art svg{opacity:1; transform:translateY(-4px);}
+.card:hover h3{color:var(--gold-light);}
+.card .card-art{
+  width:100%;
+  height:120px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  margin-bottom:34px;
+}
+.card .card-art svg{transition:.5s; opacity:.85;}
+.card .num{
+  font-family:'Raleway',sans-serif;
+  font-size:12px;
+  color:var(--gold-dim);
+  letter-spacing:.3em;
+  margin-bottom:20px;
+  display:block;
+  font-weight:700;
+}
+.card h3{
+  font-family:'Noto Serif Thai',serif;
+  font-size:22px;
+  margin:0 0 16px;
+  color:var(--cream);
+  font-weight:600;
+  line-height:1.4;
+  transition:.4s;
+}
+.card p{color:var(--muted); font-size:14px; line-height:1.9; margin:0 0 28px;}
+.card .go{
+  font-family:'Raleway',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  color:var(--gold-light);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.card .go svg{transition:.3s;}
+.card:hover .go svg{transform:translateX(6px);}
+
+@media(max-width:860px){
+  .cards{grid-template-columns:1fr;}
+  .card + .card{border-left:none;}
+}
+
+/* DETAIL PAGES */
+.detail{display:none; min-height:100vh; padding:0 0 100px;}
+.detail.active{display:block;}
+#home.hidden{display:none;}
+
+.detail-hero{
+  padding:130px 24px 50px;
+  text-align:center;
+  background:var(--ink);
+  border-bottom:1px solid var(--line);
+}
+.back-link{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold-light);
+  text-decoration:none;
+  font-family:'Raleway',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  margin-bottom:44px;
+  cursor:pointer;
+}
+.detail-hero .tag{
+  font-family:'Raleway',sans-serif;
+  color:var(--gold-dim);
+  letter-spacing:.4em;
+  text-indent:.4em;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
+.detail-hero h1{
+  font-family:'Noto Serif Thai',serif;
+  font-size:clamp(30px,5.4vw,48px);
+  color:var(--cream);
+  margin:0 0 36px;
+  font-weight:600;
+}
+.detail-art{ display:flex; justify-content:center; margin-top:6px; }
+.detail-body{
+  max-width:720px;
+  margin:0 auto;
+  padding:74px 28px 0;
+  color:#d7cbb0;
+  font-size:16px;
+  line-height:2.1;
+}
+.detail-body h4{
+  font-family:'Noto Serif Thai',serif;
+  color:var(--gold-light);
+  font-size:19px;
+  margin:48px 0 14px;
+  font-weight:600;
+}
+.detail-body ul{padding-left:0; margin:22px 0; list-style:none;}
+.detail-body li{margin-bottom:12px; padding-left:22px; position:relative;}
+.detail-body li::before{content:"—"; position:absolute; left:0; color:var(--gold-dim);}
+.divider{width:1px;height:40px; background:var(--gold-dim); margin:52px auto;}
+.quote{
+  font-family:'Noto Serif Thai',serif;
+  font-weight:500;
+  font-size:23px;
+  color:var(--gold-light);
+  text-align:center;
+  line-height:1.8;
+  margin:56px auto;
+  max-width:560px;
+}
+
+footer{
+  text-align:center;
+  padding:56px 24px;
+  color:var(--muted);
+  font-family:'Raleway',sans-serif;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.2em;
+  border-top:1px solid var(--line);
+}
+</style>
+</head>
+<body>
+
+<div class="announce">เปิดซิงก์มรดกแห่งสุราแช่ไทย — จองตัวท็อปรุ่นพิเศษวันนี้</div>
+
+<nav>
+<div class="nav-side">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#e6ca7f" stroke-width="1.2"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+</div>
+<div class="logo">THE HERITAGE</div>
+<div class="nav-side right">
+<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="#e6ca7f" stroke-width="1.2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+</div>
+</nav>
+
+<!-- HOME -->
+<div id="home">
+<section class="hero">
+<svg class="hero-glass" width="140" height="180" viewBox="0 0 140 180" fill="none">
+<path d="M92 12 L92 34 C92 46 82 50 82 64 L82 158 C82 165 102 165 102 158 L102 64 C102 50 92 46 92 34 Z" stroke="#e6ca7f" stroke-width="1"/>
+<rect x="86" y="4" width="12" height="24" rx="1.5" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="86" y1="96" x2="98" y2="96" stroke="#e6ca7f" stroke-width="1"/>
+<ellipse cx="32" cy="96" rx="24" ry="34" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M8 94 C8 116 56 116 56 94" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="32" y1="130" x2="32" y2="160" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="18" y1="160" x2="46" y2="160" stroke="#e6ca7f" stroke-width="1"/>
+</svg>
+<div class="hero-eyebrow">จากผืนดิน สู่ไห สู่รุ่นคุณ</div>
+<h1>THE <span>HERITAGE</span></h1>
+<p>สุราแช่บ่มด้วยวัตถุดิบพื่นบ้าน สืบทอดด้วยภูมิปัญญา รสชาติที่เล่าเรื่องแผ่นดินไทยได้ในทุกจิบ</p>
+<a class="btn" href="#discover">สำรวจมรดกของเรา</a>
+<div class="scroll-cue"></div>
+</section>
+
+<section class="discover" id="discover">
+<div class="eyebrow-sm">THREE STORIES OF THE JAR</div>
+<h2>สามเรื่องราวของรสชาติ</h2>
+
+<div class="cards">
+<div class="card" onclick="goTo('origin')">
+<div class="card-art">
+<svg width="60" height="94" viewBox="0 0 60 94" fill="none">
+<path d="M30 4 C30 13 22 16 22 26 L22 82 C22 89 38 89 38 82 L38 26 C38 16 30 13 30 4 Z" stroke="#e6ca7f" stroke-width="1"/>
+<rect x="25" y="0" width="10" height="10" rx="1" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="22" y1="40" x2="38" y2="40" stroke="#e6ca7f" stroke-width="1"/>
+</svg>
+</div>
+<span class="num display">I</span>
+<h3>ที่มาของสุราแช่</h3>
+<p>ย้อนรอยภูมิปัญญาการหมักบ่มที่สืบทอดจากรุ่นสู่รุ่น</p>
+<div class="go">อ่านเรื่องราว
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</div>
+</div>
+
+<div class="card" onclick="goTo('pairing')">
+<div class="card-art">
+<svg width="94" height="90" viewBox="0 0 94 90" fill="none">
+<ellipse cx="28" cy="46" rx="20" ry="28" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M8 44 C8 62 48 62 48 44" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="28" y1="74" x2="28" y2="86" stroke="#e6ca7f" stroke-width="1"/>
+<circle cx="70" cy="58" r="18" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="63" y1="53" x2="77" y2="53" stroke="#e6ca7f" stroke-width=".7"/>
+<line x1="63" y1="58" x2="77" y2="58" stroke="#e6ca7f" stroke-width=".7"/>
+<line x1="63" y1="63" x2="72" y2="63" stroke="#e6ca7f" stroke-width=".7"/>
+</svg>
+</div>
+<span class="num display">II</span>
+<h3>Food Pairing</h3>
+<p>เมนูที่ถูกออกแบบมาให้เข้ากับความกลมกล่อมของสุราแช่</p>
+<div class="go">อ่านเรื่องราว
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</div>
+</div>
+
+<div class="card" onclick="goTo('music')">
+<div class="card-art">
+<svg width="98" height="94" viewBox="0 0 98 94" fill="none">
+<ellipse cx="26" cy="48" rx="20" ry="28" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M6 46 C6 64 46 64 46 46" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="26" y1="76" x2="26" y2="88" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="66" y1="66" x2="66" y2="14" stroke="#e6ca7f" stroke-width="1"/>
+<ellipse cx="60" cy="68" rx="7" ry="4.5" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M66 14 L88 8 L88 52" stroke="#e6ca7f" stroke-width="1"/>
+<ellipse cx="82" cy="54" rx="7" ry="4.5" stroke="#e6ca7f" stroke-width="1"/>
+</svg>
+</div>
+<span class="num display">III</span>
+<h3>เพลงที่เข้ากันตอนดื่ม</h3>
+<p>จังหวะดนตรีที่ขับให้รสสัมผัสของสุราแช่ชัดเจนยิ่งขึ้น</p>
+<div class="go">อ่านเรื่องราว
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</div>
+</div>
+</div>
+</section>
+
+<footer>THE HERITAGE — มรดกแห่งรสชาติไทย · ดื่มอย่างมีสติ · สำหรับผู้มีอายุ 20 ปีขึ้นไป</footer>
+</div>
+
+<!-- DETAIL: ORIGIN -->
+<div class="detail" id="page-origin">
+<div class="detail-hero">
+<div class="back-link" onclick="goHome()">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+BACK
+</div>
+<div class="tag">STORY I</div>
+<h1>ที่มาของสุราแช่</h1>
+<div class="detail-art">
+<svg width="60" height="94" viewBox="0 0 60 94" fill="none">
+<path d="M30 4 C30 13 22 16 22 26 L22 82 C22 89 38 89 38 82 L38 26 C38 16 30 13 30 4 Z" stroke="#e6ca7f" stroke-width="1"/>
+<rect x="25" y="0" width="10" height="10" rx="1" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="22" y1="40" x2="38" y2="40" stroke="#e6ca7f" stroke-width="1"/>
+</svg>
+</div>
+</div>
+<div class="detail-body">
+<p>สุราแช่คือหนึ่งในภูมิปัญญาการหมักที่เก่าแก่ที่สุดของผืนแผ่นดินไทย เกิดจากการนำข้าวเหนียวนึ่งมาผสมกับลูกแป้งข้าวหมาก แล้วปล่อยให้จุลินทรีย์ตามธรรมชาติค่อย ๆ เปลี่ยนแป้งและน้ำตาลให้กลายเป็นแอลกอฮอล์อย่างช้า ๆ ในไหดิน</p>
+
+<h4>จุดเริ่มต้นในครัวเรือน</h4>
+<p>แต่เดิมสุราแช่ไม่ได้ถูกผลิตเพื่อการค้า แต่เป็นส่วนหนึ่งของงานบุญ งานประเพณี และการต้อนรับแขกในครัวเรือนชนบท แต่ละบ้านมีสูตรลูกแป้งและระยะเวลาการหมักที่แตกต่างกัน ทำให้รสชาติมีเอกลักษณ์เฉพาะตัวไม่ซ้ำกัน</p>
+
+<h4>บทบาทของไหดิน</h4>
+<p>ไหดินเผาไม่ได้เป็นเพียงภาชนะ แต่คือส่วนหนึ่งของกระบวนการบ่ม ผนังไหที่มีรูพรุนเล็ก ๆ ช่วยให้อากาศถ่ายเทอย่างพอเหมาะ ทำให้รสชาติค่อย ๆ นุ่มลึกขึ้นตามระยะเวลา ยิ่งบ่มนาน กลิ่นหอมของข้าวหมักและความหวานตามธรรมชาติก็ยิ่งเด่นชัด</p>
+
+<ul>
+<li>ข้าวเหนียว — วัตถุดิบตั้งต้นที่ให้แป้งและน้ำตาลสำหรับการหมัก</li>
+<li>ลูกแป้ง — หัวเชื้อจุลินทรีย์ตำรับดั้งเดิมที่สืบทอดกันมา</li>
+<li>ไหดิน — ภาชนะบ่มที่ควบคุมอุณหภูมิและการถ่ายเทอากาศตามธรรมชาติ</li>
+</ul>
+
+<div class="divider"></div>
+<div class="quote">ทุกไหคือปฏิทินของเวลา ทุกจิบคือหน้าหนึ่งของความทรงจำ</div>
+
+<p>ปัจจุบัน The Heritage นำภูมิปัญญานี้มาปรับปรุงด้วยกระบวนการควบคุมคุณภาพที่ทันสมัย โดยยังคงรักษาหัวใจของการบ่มแบบดั้งเดิมไว้อย่างเคร่งครัด เพื่อให้ทุกไหที่ส่งถึงมือคุณคงไว้ซึ่งรสชาติที่ซื่อตรงต่อรากเหง้าที่สุด</p>
+</div>
+</div>
+
+<!-- DETAIL: PAIRING -->
+<div class="detail" id="page-pairing">
+<div class="detail-hero">
+<div class="back-link" onclick="goHome()">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+BACK
+</div>
+<div class="tag">STORY II</div>
+<h1>Food Pairing</h1>
+<div class="detail-art">
+<svg width="94" height="90" viewBox="0 0 94 90" fill="none">
+<ellipse cx="28" cy="46" rx="20" ry="28" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M8 44 C8 62 48 62 48 44" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="28" y1="74" x2="28" y2="86" stroke="#e6ca7f" stroke-width="1"/>
+<circle cx="70" cy="58" r="18" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="63" y1="53" x2="77" y2="53" stroke="#e6ca7f" stroke-width=".7"/>
+<line x1="63" y1="58" x2="77" y2="58" stroke="#e6ca7f" stroke-width=".7"/>
+<line x1="63" y1="63" x2="72" y2="63" stroke="#e6ca7f" stroke-width=".7"/>
+</svg>
+</div>
+</div>
+<div class="detail-body">
+<p>ความกลมกล่อมของสุราแช่ที่มีทั้งความหวานจากข้าวหมักและรสเปรี้ยวอ่อน ๆ จากการหมัก ทำให้เข้ากันได้ดีกับอาหารไทยรสจัดที่มีทั้งเปรี้ยว เผ็ด เค็ม และหอมสมุนไพร</p>
+
+<h4>ไวน์มังคุด (รสสัมผัสแบบ Rosé หรูหรา / Light Red Profile)</h4>
+<p>เนื่องจากมังคุดมีแทนนินตามธรรมชาติและความหวานที่ลุ่มลึกซับซ้อน จึงให้คาแรกเตอร์คล้ายไวน์ Rosé ระดับพรีเมียมหรือไวน์แดงบอดี้เบาอย่าง Pinot Noir ของยุโรป เหมาะมากสำหรับอาหารรสเข้มข้น รสเค็มมัน และเผ็ดปานกลาง</p>
+<p>เมนูจับคู่:</p>
+<p>แกงมัสมั่น (เนื้อหรือแกะ): รสเปรี้ยวสดชื่น (Acidity) และแทนนินบางๆ ในไวน์จะช่วยตัดความเลี่ยนของกะทิที่เข้มข้น ในขณะที่โน้ตผลไม้รสเข้มจะช่วยชูรสเครื่องเทศอบอุ่น (อบเชย, ลูกกระวาน) ของแกงให้เด่นชัดและมีมิติยิ่งขึ้น
+คอหมูย่างพรีเมียมคู่กับน้ำจิ้มแจ่วรมควัน: ความเป็นกรดของไวน์ช่วยล้างพาเลต (Palate) หรือปุ่มรับรสหลังจากเคี้ยวหมูติดมัน และโปรไฟล์ผลไม้จะช่วยบาลานซ์ความรมควัน ความเค็ม และความเผ็ดของน้ำจิ้มแจ่วได้อย่างลงตัว
+อกเป็ดรมควันย่างถ่านราดซอสฉู่ฉี่เข้มข้น (Red Curry Reduction): ตัวเลือกหรูหราที่ไวน์จะทำหน้าที่เสมือนซอสผลไม้รสเลิศที่มาเติมเต็มและชูความหอมมันของเนื้อเป็ด ยกระดับให้เป็นเมนูระดับสากล</p>
+
+<h4>ไวน์สับปะรด (รสสัมผัสแบบ White Wine ที่สดชื่น มีชีวิตชีวา / Crisp White Profile)</h4>
+<p>ไวน์สับปะรดให้ความสดชื่น มีชีวิตชีวา และมีกรดซิตรัสที่โดดเด่น คล้ายกับไวน์ Sauvignon Blanc พรีเมียมหรือ dry Riesling เป็นอาวุธลับในการสู้กับความเผ็ดของพริกและความมันของอาหารทะเล</p>
+<p>เมนูจับคู่:</p>
+<p>ยำส้มโอกุ้งลายเสือ: คู่แท้ที่ฟ้าประทาน โน้ตผลไม้เมืองร้อนของไวน์จะสะท้อนรสชาติของส้มโอได้อย่างยอดเยี่ยม ช่วยสร้างระเบิดความสดชื่นและชูความหวานของเนื้อกุ้งลายเสือในปาก
+ต้มยำกุ้ง (น้ำใส): ความเปรี้ยวที่คมชัดของไวน์จะกลมกลืนกับน้ำมะนาว ข่า และตะไคร้ได้อย่างสวยงาม ในขณะที่เนื้อสัมผัสของผลไม้จะช่วยลดความเผ็ดร้อนของพริกขี้หนูสวนลง ทำให้ดื่มง่ายขึ้น
+ปลากะพงนึ่งมะนาว: ไวน์จะช่วยดึงความหวานตามธรรมชาติของเนื้อปลาสดให้ออกมาเด่นชัด พร้อมกับตัดความฉุนของกระเทียมและพริกในน้ำนาวได้อย่างหมดจด</p>
+
+<h4>ไวน์ลิ้นจี่ (รสสัมผัสแบบ Off-Dry White Wine ที่หอมอบอวลด้วยกลิ่นดอกไม้ / Aromatic Profile)</h4>
+<p>ไวน์ลิ้นจี่มีกลิ่นหอมจัด อบอวลด้วยกลิ่นอายของดอกไม้ และมีความหวานละมุนบางๆ คล้ายกับไวน์ Gewürztraminer หรือ Moscato ชั้นดี เหมาะที่สุดกับอาหารเรียกน้ำย่อยที่เน้นสมุนไพรและแกงใต้รสจัด</p>
+<p>เมนูจับคู่:</p>
+<p>เมี่ยงคำบัวหลวง: กลิ่นหอมของดอกไม้จากไวน์จะเข้ากันได้อย่างมหัศจรรย์กับใบชะพลู กลีบบัว ขิง และมะพร้าวคั่ว เป็นเมนูเปิดรสชาติ (Prelude) ที่สร้างความประทับใจแรกก่อนเริ่มมื้ออาหาร
+ขนมจีนน้ำยาปูใต้: อาหารใต้ขึ้นชื่อเรื่องความเผ็ดร้อน ความหวานละมุนบางๆ ของไวน์ลิ้นจี่จะทำหน้าที่เป็นตัวช่วยลดความเผ็ดบนลิ้น ทำให้นักดื่มสามารถสัมผัสและดื่มด่ำกับรสชาติเครื่องแกงสมุนไพรที่ซับซ้อนได้อย่างเต็มที่โดยไม่ถูกความเผ็ดกลบหมด
+พานาคอตต้ามะพร้าวน้ำหอม หรือ ข้าวเหนียวมะม่วงโมเดิร์น: หากเสิร์ฟแบบแช่เย็นจัดในตอนท้ายมื้อ มันจะทำหน้าที่เป็นไวน์ของหวาน (Dessert Wine) ที่ยอดเยี่ยมและสดชื่น โดยไม่หวานเลี่ยนจนเกินไป</p>
+
+<div class="divider"></div>
+<div class="quote">จับคู่ให้ถูกจาน แล้วทุกจิบจะเล่าเรื่องต่อจากที่จานเริ่มไว้</div>
+</div>
+</div>
+
+<!-- DETAIL: MUSIC -->
+<div class="detail" id="page-music">
+<div class="detail-hero">
+<div class="back-link" onclick="goHome()">
+<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+BACK
+</div>
+<div class="tag">STORY III</div>
+<h1>เพลงที่เข้ากับรสชาติ</h1>
+<div class="detail-art">
+<svg width="98" height="94" viewBox="0 0 98 94" fill="none">
+<ellipse cx="26" cy="48" rx="20" ry="28" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M6 46 C6 64 46 64 46 46" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="26" y1="76" x2="26" y2="88" stroke="#e6ca7f" stroke-width="1"/>
+<line x1="66" y1="66" x2="66" y2="14" stroke="#e6ca7f" stroke-width="1"/>
+<ellipse cx="60" cy="68" rx="7" ry="4.5" stroke="#e6ca7f" stroke-width="1"/>
+<path d="M66 14 L88 8 L88 52" stroke="#e6ca7f" stroke-width="1"/>
+<ellipse cx="82" cy="54" rx="7" ry="4.5" stroke="#e6ca7f" stroke-width="1"/>
+</svg>
+</div>
+</div>
+<div class="detail-body">
+<p>เช่นเดียวกับอาหาร เสียงเพลงก็สามารถ "ปรุงแต่ง" ประสบการณ์การดื่มได้ จังหวะและอารมณ์ของดนตรีส่งผลต่อการรับรู้รสชาติในแบบที่คาดไม่ถึง</p>
+
+<h4>ไวน์มังคุค(Mangosteen Wine)</h4>
+<p>รสสัมผัส: ลุ่มลึก มีแทนนินบางๆ หรูหรา โรแมนติก คล้ายไวน์แดงบอดี้เบา</p>
+<p>อารมณ์ (Vibe): Smooth Jazz, Neo-Soul, Late Night Lounge</p>
+
+<h4>เพลงสากล (International):</h4>
+<p>“From The Start” - Laufey (เพลงแนว Traditional Jazz ยุคใหม่ที่มีเสียงเบสนุ่มนวลและเสียงร้องที่ประณีต ชวนให้จิบไวน์มังคุดอย่างละเมียดละไม)</p>
+
+<p>“Smooth Operator” - Sade (ความคลาสสิกเหนือกาลเวลาที่ช่วยขับเน้นความหรูหราลุ่มลึกของตัวไวน์)</p>
+
+<h4>เพลงไทย (Thai):</h4>
+<p>“How Can I” - H 3 F (วงอินดี้โซลสัญชาติไทยที่ทำเพลงสากลได้นุ่มลึก ดนตรีมีความประณีตและซับซ้อน เหมาะกับมิติรสชาติของมังคุด)</p>
+
+<p>“บานปลาย (Best Part)” - Bowkylion (เสียงร้องที่มีเสน่ห์ ลื่นไหล ผสานดนตรี R&B ร่วมสมัย ยกระดับบรรยากาศบนโต๊ะอาหารหรู)</p>
+
+
+<h4>ไวน์สับปะรด (Pineapple Wine)</h4>
+<p>รสสัมผัส: สดชื่น มีชีวิตชีวา กรดซิตรัสเด่นชัด คล้ายไวน์ขาว Crisp White</p>
+<p>อารมณ์ (Vibe): Tropical Indie, City Pop, Sunny & Groovy</p>
+
+<h4>เพลงสากล (International):</h4>
+
+<p>“Cheapest Flight” - PREP (วงอินดี้ป็อกจากลอนดอนที่มีซาวด์กรูฟไลน์เบสสนุกๆ และเสียงซินธิไซเซอร์ที่สดใส เข้ากับความเปรี้ยวซ่ามีชีวิตชีวาของสับปะรด)</p>
+
+<p>“South of the River” - Tom Misch (ดนตรีแนวฟังก์/แจ๊สที่มีจังหวะชวนโยกเบาๆ เพิ่มความสดชื่นบนโต๊ะอาหาร)</p>
+
+<h4>เพลงไทย (Thai):</h4>
+<p>“Lover Boy” - Phum Viphurit (เพลงไทยกลิ่นอายอินเตอร์ที่ดังระดับโลก ด้วยซาวด์กีตาร์สไตล์เซิร์ฟป็อปที่ให้ความรู้สึกเหมือนอยู่ริมทะเลและแสงแดดฤดูร้อน)</p>
+
+<p>“เวลาเผลอ (Alright)” - Polycat (แนว City Pop ย้อนยุคที่สดใส จังหวะ Groovy สนุกสนาน ช่วยดึงความเฟรชของไวน์ออก</p>
+
+<h4>ไวน์ลิ้นจี่ (Lychee Wine)</h4>
+
+<p>รสสัมผัส: หอมอบอวลด้วยกลิ่นดอกไม้ หวานละมุนละไม คล้าย Off-Dry White Wine
+อารมณ์ (Vibe): Dream Pop, Ethereal R&B, Acoustic Chill</p>
+
+<p>รสสัมผัส: หอมอบอวลด้วยกลิ่นดอกไม้ หวานละมุนละไม คล้าย Off-Dry White Wine
+
+<h4>เพลงสากล (International):</h4>
+
+<p>“Honey” - Raveena (เพลง R&B ที่มีความละมุน ฟุ้ง และอบอวลไปด้วยกลิ่นอายของดอกไม้และธรรมชาติ ซึ่งตรงกับกลิ่นอโรมาอันโดดเด่นของลิ้นจี่)</p>
+
+<p>“EHRLING - Nu Lounge Bar Music 2017 (Mix #1)” (“Nothing” - Bruno Major (เพลงอะคูสติกป๊อปอบอุ่น หวานละมุน ช่วยส่งเสริมรสชาติหวานปลายๆ ของไวน์ลิ้นจี่ได้เป็นอย่างดี)
+) (มิกซ์เพลงสไตล์ Nu Jazz และ Tropical House ที่โดดเด่นด้วยเสียงแซกโซโฟนหรูหราและจังหวะบีตฟังสบาย เหมาะสำหรับเปิดคลอในค็อกเทลบาร์ระดับพรีเมียม
+ ช่วยดึงรสชาติความสดชื่นและกลิ่นอโรมาอันเป็นเอกลักษณ์ของลิ้นจี่ให้ออกมาได้อย่างมีรสนิยม)</p>
+
+<h4>เพลงไทย (Thai):</h4>
+<p>“เพลงดอกไม้ (Flowers)” - LANDOKMAI (วงดนตรีดรีมป็อปของไทยที่มีซาวด์ดนตรีฟุ้งๆ ชวนฝัน และเนื้อหาเกี่ยวกับดอกไม้ เหมาะกับการนั่งจิบไวน์ลิ้นจี่ในบรรยากาศผ่อนคลาย)</p>
+
+<p>“Keep Cold” - Numcha (เพลงอินดี้ป๊อปฟังสบาย เสียงร้องใสๆ ละมุนตา เสมือนความรู้สึกตอนดื่มไวน์ลิ้นจี่แช่เย็นจัดในวันพักผ่อน)</p>
+
+<div class="divider"></div>
+<div class="quote">เลือกเพลงให้ถูกจังหวะ แล้วรสชาติจะเล่นดนตรีในปากคุณเอง</div>
+</div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+/* background music — plays muted-autoplay on load (browser policy),
+   visitor taps the sound icon in the nav to turn audio on/off */
+let ytPlayer, ytReady = false, soundOn = false;
+function onYouTubeIframeAPIReady(){
+  ytPlayer = new YT.Player('ytplayer', {
+    videoId: 'jpv2tMJJuz0',
+    playerVars: { autoplay: 1, loop: 1, playlist: 'jpv2tMJJuz0', controls: 0, disablekb: 1, fs: 0, modestbranding: 1 },
+    events: {
+      onReady: function(e){
+        ytReady = true;
+        e.target.mute();
+        e.target.playVideo();
+      }
+    }
+  });
+}
+function toggleSound(){
+  if(!ytReady) return;
+  const icon = document.getElementById('soundToggle');
+  if(soundOn){
+    ytPlayer.mute();
+    soundOn = false;
+    icon.classList.add('muted');
+  } else {
+    ytPlayer.unMute();
+    ytPlayer.setVolume(45);
+    soundOn = true;
+    icon.classList.remove('muted');
+  }
+}
+document.getElementById('soundToggle').classList.add('muted');
+ 
+function goTo(id){
+  document.getElementById('home').classList.add('hidden');
+  document.querySelectorAll('.detail').forEach(d => d.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  window.scrollTo(0,0);
+  history.pushState({page:id}, '', '#' + id);
+}
+function goHome(){
+  document.querySelectorAll('.detail').forEach(d => d.classList.remove('active'));
+  document.getElementById('home').classList.remove('hidden');
+  window.scrollTo(0,0);
+  history.pushState({page:'home'}, '', '#');
+}
+window.addEventListener('popstate', () => {
+  const hash = location.hash.replace('#','');
+  if(hash === 'origin' || hash === 'pairing' || hash === 'music'){
+    document.getElementById('home').classList.add('hidden');
+    document.querySelectorAll('.detail').forEach(d => d.classList.remove('active'));
+    document.getElementById('page-' + hash).classList.add('active');
+  } else {
+    document.querySelectorAll('.detail').forEach(d => d.classList.remove('active'));
+    document.getElementById('home').classList.remove('hidden');
+  }
+});
+(function(){
+  const hash = location.hash.replace('#','');
+  if(hash === 'origin' || hash === 'pairing' || hash === 'music'){
+    goTo(hash);
+  }
+})();
+</script>
+ 
+</body>
+</html>
